@@ -17,6 +17,11 @@ app.get("/", (req, res) => {
   res.send("Server is live ✅");
 });
 
+// All routes above this
+import { ApiError } from "./utils/ApiError.js";
+
+app.use(ApiError); 
+
 // Importing routes
 
 import userRouter from "./routes/user.routes.js";
@@ -29,3 +34,5 @@ app.use("/api/v1/task", taskRouter);
 app.use("/api/v1/action", actionRouter);
 
 export { app };
+
+
