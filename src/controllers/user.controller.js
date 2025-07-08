@@ -52,15 +52,13 @@ const registerUser = asyncHandler(async (req, res) => {
 
 // Login User
 const loginUser = asyncHandler(async (req, res) => {
-  const { email, username, password } = req.body;
+  const { email, password } = req.body;
 
-  if (!username && !email) {
-    throw new ApiError(400, "Username or email is required");
+  if (!email || !password) {
+    throw new ApiError(400, "email nad password is required is required");
   }
 
-  const user = await User.findOne({
-    $or: [{ username }, { email }],
-  });
+  const user = await User.findOne({ email });
   if (!user) {
     throw new ApiError(404, "user does not exit");
   }

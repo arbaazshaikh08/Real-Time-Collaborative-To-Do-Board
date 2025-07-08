@@ -17,10 +17,6 @@ app.get("/", (req, res) => {
   res.send("Server is live ✅");
 });
 
-// All routes above this
-import { ApiError } from "./utils/ApiError.js";
-
-app.use(ApiError); 
 
 // Importing routes
 
